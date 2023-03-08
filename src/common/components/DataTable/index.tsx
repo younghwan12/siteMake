@@ -7,25 +7,21 @@ import { Option, Select } from '../Select'
 import Button from '../Button'
 import Space from '../Space'
 
-interface ICustomDataTableProps extends DataTableProps<any> {
+interface ICustomDataTableProps extends DataTableProps {
     extraButtons?: React.ReactNode;
     tooltip?: React.ReactNode;
     extraForm?: React.ReactNode;
     refresh?: React.ReactNode;
-    /** 기본 Row 10, 30, 50 외 필요시 전달 */
-    rowNums?: number[] | null;
     onRefresh?: () => void;
     onRowClick?: any;
 }
 
 const DataTable: React.FC<ICustomDataTableProps> = (props) => {
-    const { totalRecords, rowNums } = props;
+    const { totalRecords } = props;
     const [first, setFirst] = useState(0);
 
-    const [rows, setRows] = useState(
-        props.rowNums ? props.rowNums[0] : props.rows,
-    );
-    const [tableCellSize, setTableCellSize] = useState<DataTableProps<any>['size']>("normal");
+
+    const [tableCellSize, setTableCellSize] = useState<DataTableProps['size']>("normal");
 
     const handleCellSizeBtn1 = useCallback(() => {
         setTableCellSize(tableCellSize === "normal" ? "small" : "normal")
@@ -40,10 +36,10 @@ const DataTable: React.FC<ICustomDataTableProps> = (props) => {
         props.onPage(e);
     };
     const isPaginatorTable = useMemo(() => {
-        if (totalRecords && rowNums && totalRecords > rowNums[0]) {
+        if (totalRecords && totalRecords > 0) {
             return true;
         }
-    }, [totalRecords, rowNums])
+    }, [totalRecords,])
 
     const handleOnclick = (e) => {
         if (
@@ -64,16 +60,10 @@ const DataTable: React.FC<ICustomDataTableProps> = (props) => {
             >
                 <Space>
                     {props?.extraButtons && props.extraButtons}
-                    {props?.rowNums && props.value && Array.isArray(props.value) && props.value.length > props.rowNums[0] ? (
+                    {props.value && Array.isArray(props.value) ? (
                         <Select
-                            defaultValue={props.rowNums[0]}
                             onChange={handleRowNumChange}
                         >
-                            {props.rowNums.map((item) => (
-                                <Option key={item} value={item}>
-                                    {item}건 보기
-                                </Option>
-                            ))}
                         </Select>
                     ) : null}
 
@@ -92,7 +82,6 @@ const DataTable: React.FC<ICustomDataTableProps> = (props) => {
             {props.extraForm !== undefined ? (<div>{props.extraForm}</div>) : null}
             {/* <SectionBody> */}
             <PDataTable
-                rows={rows}
                 size={tableCellSize}
                 paginator={isPaginatorTable}
                 {...props}
@@ -111,10 +100,6 @@ const DataTable: React.FC<ICustomDataTableProps> = (props) => {
         </>
     )
 
-}
-
-DataTable.defaultProps = {
-    rowNums: [10, 30, 50,]
 }
 
 export default DataTable;

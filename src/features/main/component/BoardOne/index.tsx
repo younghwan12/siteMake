@@ -130,7 +130,7 @@ const BoardOne = () => {
 
 
     return (
-        <div className="col-12">
+        <div className="mb-2">
             <Panel header="공지사항 및 진척현황" toggleable>
                 <div className='grid'>
                     <div className="grid col-12 xl:col-6">

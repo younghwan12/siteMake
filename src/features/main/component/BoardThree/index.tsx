@@ -44,7 +44,7 @@ const BoardThree = () => {
     }, [layoutConfig])
 
     return (
-        <div className="col-12">
+        <div className="mb-2">
             <Panel header=" 요구사항(415건) / 일정(174건) / 운영전환(2건)" toggleable collapsed>
                 <h5 className='blind'>요구사항 / 일정 / 운영전환</h5>
                 <div className="flex card">

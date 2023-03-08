@@ -10,11 +10,11 @@ const AppMenu = () => {
     const contextPath = getConfig().publicRuntimeConfig.contextPath;
     const model = [
         {
-            //label: 'Home',
+            label: 'Home',
             items: [{ label: 'Dashboard', icon: 'pi pi-fw pi-home', to: '/' }]
         },
         //내작업
-        {
+        /* {
             // label: 'My Work',
             items: [
                 {
@@ -315,10 +315,12 @@ const AppMenu = () => {
                     ]
                 }]
         },
+        */
         {
             label: 'API TEST',
             items: [
                 { label: 'Board', icon: 'pi pi-fw pi-id-card', to: '/board' },
+                { label: '탐색기', icon: 'pi pi-fw pi-file-excel', to: '/explorer' },
             ]
         },
         {

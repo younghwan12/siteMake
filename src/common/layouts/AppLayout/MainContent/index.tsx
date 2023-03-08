@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { BoardOne, BoardTwo, BoardThree } from '@/features/main/component';
+import { BoardOne, BoardTwo, BoardThree, BoardFour, BoardFive } from '@/features/main/component';
 const MainConent = () => {
     return (
         <>
@@ -9,6 +9,8 @@ const MainConent = () => {
             <BoardTwo />
             {/*요구사항/ 일정 / 운영전환 */}
             <BoardThree />
+            <BoardFour />
+            <BoardFive />
         </>
     );
 }
