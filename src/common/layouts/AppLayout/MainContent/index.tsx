@@ -8,8 +8,8 @@ const MainConent = () => {
             {/*일정/인력/Risk/Issue/Action Item/변경 요청 */}
             <BoardTwo />
             {/*요구사항/ 일정 / 운영전환 */}
-            <BoardThree />
-            <BoardFour />
+            {/* <BoardThree />
+            <BoardFour /> */}
             <BoardFive />
         </>
     );

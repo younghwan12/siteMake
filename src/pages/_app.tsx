@@ -70,6 +70,10 @@ const App = ({ Component, pageProps }: AppPropsWithLayout) => {
 }
 
 App.getInitialProps = async (context: AppContext) => {
+
+  // const { ctx } = context;
+  // console.log(Object.keys(ctx));
+
   return {
     cookies: parseCookies(context?.ctx?.req)
   }

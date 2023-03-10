@@ -1,0 +1,151 @@
+{
+  "board": [
+    {
+      "title": "asd",
+      "author": "asdas",
+      "id": 16
+    },
+    {
+      "title": "진진짜",
+      "author": "123",
+      "id": 17
+    },
+    {
+      "title": "제복",
+      "author": "작성자",
+      "id": 18
+    },
+    {
+      "title": "ddd",
+      "author": "123",
+      "id": 19
+    }
+  ],
+  "treelist": [
+    {
+      "tree_id": "1",
+      "parent_tree_id": "0",
+      "menu_nm": "menu1",
+      "key": "menu1"
+    },
+    {
+      "tree_id": "1.1",
+      "parent_tree_id": "1",
+      "menu_nm": "menu1-1",
+      "key": "menu1-1"
+    },
+    {
+      "tree_id": "1.1.1",
+      "parent_tree_id": "1.1",
+      "menu_nm": "menu1-1-1",
+      "key": "menu1-1-1",
+      "isLeaf": "true"
+    },
+    {
+      "tree_id": "1.1.2",
+      "parent_tree_id": "1.1",
+      "menu_nm": "menu1-1-2",
+      "key": "menu1-1-2",
+      "isLeaf": "true"
+    },
+    {
+      "tree_id": "1.2",
+      "parent_tree_id": "1",
+      "menu_nm": "menu1-2",
+      "key": "menu1-2"
+    },
+    {
+      "tree_id": "1.2.1",
+      "parent_tree_id": "1.2",
+      "menu_nm": "menu1-2-1",
+      "key": "menu1-2-1",
+      "isLeaf": "true"
+    },
+    {
+      "tree_id": "1.2.2",
+      "parent_tree_id": "1.2",
+      "menu_nm": "menu1-2-2",
+      "key": "menu1-2-2",
+      "isLeaf": "true"
+    }
+  ],
+  "menu1": [
+    {
+      "dataName": "menu1-1",
+      "fileSize": "500kb",
+      "type": "folder",
+      "icon": "RiFolder3Line",
+      "date": "2019-01-30"
+    },
+    {
+      "dataName": "menu1-2",
+      "fileSize": "10mb",
+      "type": "folder",
+      "icon": "RiFolder3Line",
+      "date": "2022-01-30"
+    }
+  ],
+  "menu1-1": [
+    {
+      "dataName": "한글",
+      "fileSize": "100mb",
+      "type": "hwp",
+      "icon": "RiFileHwpLine",
+      "date": "2022-01-30"
+    },
+    {
+      "dataName": "엑셀파일",
+      "fileSize": "100kb",
+      "type": "excel",
+      "icon": "RiFileExcel2Line",
+      "date": "2023-02-30"
+    },
+    {
+      "dataName": "vscode",
+      "fileSize": "10mb",
+      "type": "html",
+      "icon": "RiFileCodeLine",
+      "date": "2022-08-30"
+    },
+    {
+      "dataName": "알집",
+      "fileSize": "1gb",
+      "type": "jpg",
+      "icon": "RiFileZipFill",
+      "date": "2022-12-30"
+    },
+    {
+      "dataName": "파일",
+      "fileSize": "100kb",
+      "type": "png",
+      "icon": "RiFileHwpLine",
+      "date": "2023-02-30"
+    },
+    {
+      "dataName": "동영상",
+      "fileSize": "10mb",
+      "type": "jpg",
+      "icon": "RiFileHwpLine",
+      "date": "2022-08-30"
+    },
+    {
+      "dataName": "파일",
+      "fileSize": "100kb",
+      "type": "png",
+      "icon": "RiFileHwpLine",
+      "date": "2023-02-30"
+    },
+    {
+      "dataName": "동영상",
+      "fileSize": "10mb",
+      "type": "jpg",
+      "icon": "RiFileHwpLine",
+      "date": "2022-08-30"
+    }
+  ],
+  "admin": [
+    {
+      "token": "login-token"
+    }
+  ]
+}

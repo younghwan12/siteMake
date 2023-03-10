@@ -24,7 +24,8 @@ const BoardFive = () => {
                 data3: "data3",
                 data4: "data4",
                 data5: "data5",
-                menu_nm: '메뉴1'
+                menu_nm: '메뉴1',
+                key: '메뉴1'
             },
             {
                 tree_id: "1.1",
@@ -34,7 +35,8 @@ const BoardFive = () => {
                 data3: "data1.1-3",
                 data4: "data1.1-4",
                 data5: "data1.1-5",
-                menu_nm: '메뉴1-1'
+                menu_nm: '메뉴1-1',
+                key: '메뉴1-1'
             },
             {
                 tree_id: "1.1.1",
@@ -44,7 +46,9 @@ const BoardFive = () => {
                 data3: "data1.1.1-3",
                 data4: "data1.1.1-4",
                 data5: "data1.1.1-5",
-                menu_nm: '메뉴1-1-1'
+                menu_nm: '메뉴1-1-1',
+                key: '메뉴1-1-1'
+
             },
             {
                 tree_id: "1.1.2",
@@ -54,7 +58,8 @@ const BoardFive = () => {
                 data3: "data3.1.2-3",
                 data4: "data4.1.2-4",
                 data5: "data5.1.2-5",
-                menu_nm: '메뉴1-1-2'
+                menu_nm: '메뉴1-1-2',
+                key: '메뉴1-1-2'
             },
             {
                 tree_id: "1.2",
@@ -64,7 +69,8 @@ const BoardFive = () => {
                 data3: "data1.2-3",
                 data4: "data1.2-4",
                 data5: "data1.2-5",
-                menu_nm: '메뉴1-2'
+                menu_nm: '메뉴1-2',
+                key: '메뉴1-2'
             },
             {
                 tree_id: "1.2.1",
@@ -74,7 +80,8 @@ const BoardFive = () => {
                 data3: "data1.2.1-3",
                 data4: "data1.2.1-4",
                 data5: "data1.2.1-5",
-                menu_nm: '메뉴1-2-1'
+                menu_nm: '메뉴1-2-1',
+                key: '메뉴1-2-1'
             },
             {
                 tree_id: "1.2.2",
@@ -84,7 +91,8 @@ const BoardFive = () => {
                 data3: "data1.2.2-3",
                 data4: "data1.2.2-4",
                 data5: "data1.2.2-5",
-                menu_nm: '메뉴1-2-2'
+                menu_nm: '메뉴1-2-2',
+                key: '메뉴1-2-2'
             },
         ]
     }

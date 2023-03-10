@@ -5,54 +5,7 @@ import { classNames } from 'primereact/utils';
 import React, { forwardRef, useContext, useImperativeHandle, useRef } from 'react';
 import { LayoutContext } from './context/layoutcontext';
 
-import { Search, FormItem } from '@/common/components';
-// import { AutoComplete, Input } from 'antd';
-
-/*
-const renderTitle = (title) => (
-    <span>
-        {title}
-        <a
-            style={{
-                float: 'right',
-            }}
-            href="https://www.google.com/search?q=antd"
-            target="_blank"
-            rel="noopener noreferrer"
-        >
-            more
-        </a>
-    </span>
-);
-const renderItem = (title, count) => ({
-    value: title,
-    label: (
-        <div
-            style={{
-                display: 'flex',
-                justifyContent: 'space-between',
-            }}
-        >
-            {title}
-        </div>
-    ),
-});
-
-const options = [
-    {
-        label: renderTitle('Libraries'),
-        options: [renderItem('AntDesign', 10000), renderItem('AntDesign UI', 10600)],
-    },
-    {
-        label: renderTitle('Solutions'),
-        options: [renderItem('AntDesign UI FAQ', 60100), renderItem('AntDesign FAQ', 30010)],
-    },
-    {
-        label: renderTitle('Articles'),
-        options: [renderItem('AntDesign design language', 100000)],
-    },
-];
-*/
+import { Select } from 'antd';
 
 const AppTopbar = forwardRef((props, ref) => {
     const { layoutConfig, layoutState, onMenuToggle, showProfileSidebar } = useContext(LayoutContext);
@@ -67,14 +20,14 @@ const AppTopbar = forwardRef((props, ref) => {
         topbarmenubutton: topbarmenubuttonRef.current
     }));
 
-    const ChangeSearch = (e) => {
-        console.log("밸류입니다", e)
-    }
 
-    const viewOption = () => {
-        console.log("뷰 옵션")
-    }
 
+    const onChange = (value) => {
+        console.log(`selected ${value}`);
+    };
+    const onSearch = (value) => {
+        console.log('search:', value);
+    };
 
 
     return (
@@ -93,7 +46,42 @@ const AppTopbar = forwardRef((props, ref) => {
             </button>
 
 
-            <Search onSearch={ChangeSearch} style={{ width: "300px" }} onClick={viewOption} />
+            <Select
+                showSearch
+                optionFilterProp="children"
+                onChange={onChange}
+                onSearch={onSearch}
+                filterOption={(input, option) =>
+                    (option?.label ?? '').toLowerCase().includes(input.toLowerCase())
+                }
+                style={{ width: "20%" }}
+                options={[
+                    {
+                        value: '1페이지',
+                        label: '1페이지',
+                    },
+                    {
+                        value: '2페이지',
+                        label: '2페이지',
+                    },
+                    {
+                        value: '3페이지',
+                        label: '3페이지',
+                    },
+                    {
+                        value: '4페이지',
+                        label: '4페이지',
+                    },
+                    {
+                        value: '5페이지',
+                        label: '5페이지',
+                    },
+                    {
+                        value: '6페이지',
+                        label: '6페이지',
+                    },
+                ]}
+            />
 
             <button ref={topbarmenubuttonRef} type="button" className="p-link layout-topbar-menu-button layout-topbar-button" onClick={showProfileSidebar}>
                 <i className="pi pi-ellipsis-v" />

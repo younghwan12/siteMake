@@ -1,6 +1,6 @@
 import getConfig from 'next/config';
 import { useRouter } from 'next/router';
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import AppConfig from '../../../layout/AppConfig';
 import { Checkbox } from 'primereact/checkbox';
 import { Button } from 'primereact/button';
@@ -8,6 +8,9 @@ import { Password } from 'primereact/password';
 import { LayoutContext } from '../../../layout/context/layoutcontext';
 import { InputText } from 'primereact/inputtext';
 import { classNames } from 'primereact/utils';
+import { useAppDispatch } from '@/redux/hooks';
+
+import { useLazyGetLoginCheckQuery } from '@/pages/api/loginApi';
 
 const LoginPage = () => {
     const [password, setPassword] = useState('');
@@ -19,6 +22,11 @@ const LoginPage = () => {
     const router = useRouter();
     const containerClassName = classNames('surface-ground flex align-items-center justify-content-center min-h-screen min-w-screen overflow-hidden', { 'p-input-filled': layoutConfig.inputStyle === 'filled' });
 
+    const dispatch = useAppDispatch();
+
+    const [getCheck, { data: token }] = useLazyGetLoginCheckQuery()
+
+
     const checkID = (e) => {
         console.log("password", password)
         console.log("email", email)
@@ -26,8 +34,19 @@ const LoginPage = () => {
             alert("이메일을 입력하세요")
         } else if (!password) {
             alert("비밀번호를 입력하세요")
+        } else {
+            getCheck(email)
         }
     }
+
+    useEffect(() => {
+        if (token) {
+            console.log("token, 메인 이동", { ...token })
+        } else (
+            console.log("대기")
+        )
+    }, [token])
+
     return (
         <div className={containerClassName}>
             <div className="flex flex-column align-items-center justify-content-center">
@@ -62,7 +81,7 @@ const LoginPage = () => {
                                     Forgot password?
                                 </a>
                             </div>
-                            <Button label="Sign In" className="w-full p-3 text-xl" onClick={(e) => checkID(e)}></Button>
+                            <Button label="Sign In" className="w-full p-3 text-xl" onClick={(e) => checkID(e)} />
                         </div>
                     </div>
                 </div>

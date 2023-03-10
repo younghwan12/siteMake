@@ -3,40 +3,58 @@ import React, { useState, useEffect } from "react"
 import { DirectoryTree } from "@/common/components"
 import { arrayToTree, TreeItem } from '@/common/utils/treeUtil/arrayToTree'
 import type { DataNode, TreeProps } from 'antd/es/tree';
-import { useGetExplorerListQuery, useLazyGetExplorerDetailQuery } from "../../redux/explorerApi";
 
 import { DataTable } from 'primereact/datatable';
 import { Column } from 'primereact/column';
-import { ITreeResList } from "../../types";
 
 import * as ReactIcons from "react-icons/ri";
 
+const x = 3;
+const y = 2;
+const z = 1;
+const defaultData: DataNode[] = [];
 
-const ExplorerTable = () => {
+const generateData = (_level: number, _preKey?: React.Key, _tns?: DataNode[]) => {
+    const preKey = _preKey || '0';
+    const tns = _tns || defaultData;
+
+    const children: React.Key[] = [];
+    for (let i = 0; i < x; i++) {
+        const key = `${preKey}-${i}`;
+        tns.push({ title: key, key });
+        if (i < y) {
+            children.push(key);
+        }
+    }
+    if (_level < 0) {
+        return tns;
+    }
+    const level = _level - 1;
+    children.forEach((key, index) => {
+        tns[index].children = [];
+        return generateData(level, key, tns[index].children);
+    });
+};
+generateData(z);
+
+
+const treeGuidePage = () => {
     const [treemenus, setTreemenus] = useState([]);
     const [detailData, setDetailData] = useState();
-    const { data: ExplorerList } = useGetExplorerListQuery();
 
-    const [getDetail, { data: detailList, isFetching, isSuccess }] = useLazyGetExplorerDetailQuery();
 
-    useEffect(() => {
-        if (ExplorerList && ExplorerList.length > 0) {
-            const treeData = arrayToTree(ExplorerList, {
-                id: "tree_id",
-                parentId: "parent_tree_id",
-                dataField: null,
-                rootParentIds: { [ExplorerList[0].parent_tree_id]: true }
-            });
-            setTreemenus(treeData)
-        }
-    }, [ExplorerList])
+    // useEffect(() => {
+    //     if (ExplorerList && ExplorerList.length > 0) {
+    //         const treeData = arrayToTree(ExplorerList, {
+    //             id: "tree_id",
+    //             parentId: "parent_tree_id",
+    //             dataField: null,
+    //             rootParentIds: { [ExplorerList[0].parent_tree_id]: true }
+    //         });
+    //         setTreemenus(treeData)
+    //     }
+    // }, [ExplorerList])
 
-    const clickEvent = (e, r) => {
-        // console.log("data", r.node.children)
-        getDetail(
-            r.node.menu_nm
-        )
-    }
 
     const iconBodyType = (rowData) => {
         const Compoenent = ReactIcons[rowData.icon];
@@ -46,6 +64,13 @@ const ExplorerTable = () => {
             <Compoenent />
         )
     }
+
+    const [gData, setGData] = useState(defaultData);
+    const [expandedKeys] = useState(['0-0', '0-0-0', '0-0-0-0']);
+
+    const onDragEnter: TreeProps['onDragEnter'] = (info) => {
+        console.log(info);
+    };
 
     const onDrop: TreeProps['onDrop'] = (info) => {
         console.log(info);
@@ -68,7 +93,7 @@ const ExplorerTable = () => {
                 }
             }
         };
-        const data = [...treemenus];
+        const data = [...gData];
 
         // Find dragObject
         let dragObj: DataNode;
@@ -109,13 +134,13 @@ const ExplorerTable = () => {
                 ar.splice(i! + 1, 0, dragObj!);
             }
         }
-        setTreemenus(data);
+        setGData(data);
     };
 
-
     useEffect(() => {
-        console.log("treemenus", treemenus)
-    }, [treemenus])
+        console.log("트리테이블 들어갈 데이터입니다", gData)
+    }, [gData])
+
 
     return (
         <div className="grid">
@@ -124,26 +149,29 @@ const ExplorerTable = () => {
                     <h5>Tree list</h5>
                     <DirectoryTree
                         blockNode
-                        onSelect={(e, r) => clickEvent(e, r)}
-                        treeData={treemenus}
+                        // onSelect={(e, r) => clickEvent(e, r)}
+                        defaultExpandedKeys={expandedKeys}
                         draggable
+                        onDragEnter={onDragEnter}
                         onDrop={onDrop}
-                        titleRender={(node: TreeItem) => {
-                            return (
-                                <span
-                                >
-                                    {node.menu_nm}
-                                </span>
-                            )
-                        }}
+                        treeData={gData}
+
+                    // titleRender={(node: TreeItem) => {
+                    //     return (
+                    //         <span
+                    //         >
+                    //             {node.menu_nm}
+                    //         </span>
+                    //     )
+                    // }}
                     />
                 </div>
             </div>
             <div className="col-12 xl:col-8">
                 <div className="card">
                     <DataTable
-                        value={detailList}
-                        loading={isFetching}
+                        // value={detailList}
+                        // loading={isFetching}
                         paginator rows={5}
                         size={"small"}
                     >
@@ -161,4 +189,4 @@ const ExplorerTable = () => {
         </div>
     )
 }
-export default ExplorerTable
+export default treeGuidePage
