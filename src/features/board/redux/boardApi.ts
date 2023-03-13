@@ -59,4 +59,4 @@ const boardApi = appTaggedApi.injectEndpoints({
 });
 
 export default boardApi;
-export const { useLazyGetboardListQuery, useAddboardListMutation, useDelboardListMutation, useUpdateboardListMutation } = boardApi;
+export const { useGetboardListQuery, useLazyGetboardListQuery, useAddboardListMutation, useDelboardListMutation, useUpdateboardListMutation } = boardApi;

@@ -29,7 +29,8 @@
     "**/*.ts",
     "**/*.tsx",
     "src/demo/components/CodeHighlight.js",
-    "src/demo/components/CodeHighlight.js"
+    "src/demo/components/CodeHighlight.js",
+    "src/features/flowchart/component/CustomEdge.js"
   ],
   "exclude": [
     "node_modules"

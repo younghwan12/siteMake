@@ -321,6 +321,7 @@ const AppMenu = () => {
             items: [
                 { label: 'Board', icon: 'pi pi-fw pi-id-card', to: '/board' },
                 { label: '탐색기', icon: 'pi pi-fw pi-file-excel', to: '/explorer' },
+                { label: 'flowchart', icon: 'pi pi-fw pi-circle-off', to: '/flowchart' },
             ]
         },
         {

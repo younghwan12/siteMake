@@ -1,29 +1,17 @@
 import { Chart } from 'primereact/chart';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { DataTable } from 'primereact/datatable';
 import { Column } from '@/common/components';
 import { Panel } from 'primereact/panel';
-const dummydata = [
-    {
-        title: "[교육자료] PIMS 교육자료",
-    },
-    {
-        title: "[자료] 자료",
-    },
-    {
-        title: "[KB] 자료",
-    },
-    {
-        title: "[자료] 오픈소스 유지보수",
-    },
-    {
-        title: "[자료] DevOps 자동화 관련자료",
-    },
-]
+import { useGetboardListQuery } from '@/features/board/redux';
+import { useGetqnaListQuery } from '@/features/qna/redux/qnaApi';
 
 const BoardOne = () => {
 
-    const [products, setProducts] = useState(dummydata);
+
+    const { data: qnaList } = useGetqnaListQuery();
+
+    const { data: boardList } = useGetboardListQuery();
 
     // Line
     const [basicData] = useState({
@@ -131,15 +119,16 @@ const BoardOne = () => {
 
     return (
         <div className="mb-2">
-            <Panel header="공지사항 및 진척현황" toggleable>
+            <Panel header={`공지사항 및 진척현황 / 공지사항: ${qnaList?.length} 건 / 프로젝트 일정관리: ${qnaList?.length} 건 / 기술지원게시판: ${qnaList?.length} 건 / Q&A 게시판 : ${boardList?.length} 건 `} toggleable>
                 <div className='grid'>
                     <div className="grid col-12 xl:col-6">
                         <div className="col-12 xl:col-6">
                             <div className="card">
                                 <h5 className='blind'>공지사항</h5>
                                 <DataTable
-                                    value={products}
+                                    value={qnaList}
                                     size={'small'}
+                                    paginator rows={5}
                                 >
                                     <Column header="공지사항" field="title" />
                                 </DataTable>
@@ -149,8 +138,9 @@ const BoardOne = () => {
                             <div className="card">
                                 <h5 className='blind'>프로젝트 일정관리</h5>
                                 <DataTable
-                                    value={products}
+                                    value={qnaList}
                                     size={'small'}
+                                    paginator rows={5}
                                 >
                                     <Column header="프로젝트 일정관리" field="title" />
                                 </DataTable>
@@ -160,8 +150,9 @@ const BoardOne = () => {
                             <div className="card">
                                 <h5 className='blind'>기술지원 게시판</h5>
                                 <DataTable
-                                    value={products}
+                                    value={qnaList}
                                     size={'small'}
+                                    paginator rows={5}
                                 >
                                     <Column header="기술지원 게시판" field="title" />
                                 </DataTable>
@@ -171,8 +162,9 @@ const BoardOne = () => {
                             <div className="card">
                                 <h5 className='blind'>Q&A 게시판</h5>
                                 <DataTable
-                                    value={products}
                                     size={'small'}
+                                    value={boardList}
+                                    paginator rows={5}
                                 >
                                     <Column header="Q&A 게시판" field="title" />
                                 </DataTable>

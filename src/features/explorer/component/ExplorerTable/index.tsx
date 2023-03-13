@@ -81,7 +81,6 @@ const ExplorerTable = () => {
             // Drop on the content
             loop(data, dropKey, (item) => {
                 item.children = item.children || [];
-                // where to insert 示例添加到头部，可以是随意位置
                 item.children.unshift(dragObj);
             });
         } else if (
@@ -91,7 +90,6 @@ const ExplorerTable = () => {
         ) {
             loop(data, dropKey, (item) => {
                 item.children = item.children || [];
-                // where to insert 示例添加到头部，可以是随意位置
                 item.children.unshift(dragObj);
                 // in previous version, we use item.children.push(dragObj) to insert the
                 // item to the tail of the children
@@ -110,12 +108,12 @@ const ExplorerTable = () => {
             }
         }
         setTreemenus(data);
+
+        // children 이 비어있을시 isLeaf : true 처리해야함 
+
+
+        console.log(`Move ${dragObj.key} to ${dropKey}`);
     };
-
-
-    useEffect(() => {
-        console.log("treemenus", treemenus)
-    }, [treemenus])
 
     return (
         <div className="grid">
