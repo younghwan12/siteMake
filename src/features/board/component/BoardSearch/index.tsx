@@ -13,6 +13,8 @@ import { ISearchReqList } from '../../types'
 
 
 import { WritingSearchModal } from '@/features/modal'
+import { Checkbox } from "antd";
+import { CheckboxValueType } from "antd/es/checkbox/Group";
 
 const BoardSearch = () => {
     const [form] = useForm();
@@ -41,6 +43,29 @@ const BoardSearch = () => {
         console.log('ddd')
     }
 
+    const options = [
+        { label: 'Apple', value: 'Apple' },
+        { label: 'Pear', value: 'Pear' },
+        { label: 'Orange', value: 'Orange' },
+    ];
+
+
+    const [selectedFruit, setSelectedFruit] = useState<string[]>([]);
+
+    const handleChange = (e: any) => {
+        setSelectedFruit(e.target.checked ? [e.target.value] : []);
+    };
+
+    const isFruitChecked = (fruit: string) => {
+        return selectedFruit && selectedFruit.includes(fruit);
+    }
+
+    const fruits = [
+        { value: 'apple', label: '사과' },
+        { value: 'banana', label: '바나나' },
+        { value: 'orange', label: '오렌지' },
+    ];
+
     return (
         <>
             <Form form={form} onFinish={handleFinish}>
@@ -59,6 +84,20 @@ const BoardSearch = () => {
                                     <Search />
                                 </FormItem>
                             </Space>
+                        </FormItem>
+                        <FormItem>
+                            <Checkbox.Group value={selectedFruit}>
+                                {fruits.map(fruit => (
+                                    <Checkbox
+                                        key={fruit.value}
+                                        value={fruit.value}
+                                        checked={isFruitChecked(fruit.value)}
+                                        onChange={handleChange}
+                                    >
+                                        {fruit.label}
+                                    </Checkbox>
+                                ))}
+                            </Checkbox.Group>
                         </FormItem>
                     </SearchFormBox>
                     <SearchFormControls form={form} />

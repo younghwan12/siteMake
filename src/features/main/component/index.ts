@@ -3,6 +3,4 @@ export { default as BoardTwo } from './BoardTwo'
 export { default as BoardThree } from './BoardThree'
 export { default as BoardFour } from './BoardFour'
 export { default as BoardFive } from './BoardFive'
-
-
-
+export { default as BoardSix } from './BoardSix'

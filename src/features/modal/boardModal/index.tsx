@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useAppDispatch } from "@/redux/hooks";
 import { Modal, Input, Form, FormItem, useForm } from "@/common/components";
-import { DataTableStateEvent } from "primereact/datatable";
+import { DataTablePFSEvent } from "primereact/datatable";
 import { Section } from "@/common/layouts";
 import { SearchForm, SearchFormBox, SearchFormControls } from "@/features/search";
 
@@ -44,7 +44,7 @@ const WritingSearchModal = ({ visible, onOk, setVisible }: IModalProps) => {
         }
     }, [boardList])
 
-    const handlePage = (e: DataTableStateEvent) => {
+    const handlePage = (e: DataTablePFSEvent) => {
         getBoard({
             ...searchParams,
             page: e.page,
