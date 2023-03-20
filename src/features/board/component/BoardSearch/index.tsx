@@ -52,7 +52,7 @@ const BoardSearch = () => {
 
     const [selectedFruit, setSelectedFruit] = useState<string[]>([]);
 
-    const handleChange = (e: any) => {
+    const handleChange = (e) => {
         setSelectedFruit(e.target.checked ? [e.target.value] : []);
     };
 

@@ -37,10 +37,9 @@ const BoardDetailModal = ({ visible2, setVisible2, rowData }: IModalProps) => {
     }
 
     useEffect(() => {
-        console.log(rowData)
         form.setFieldsValue({
-            param_a: rowData?.param_a,
-            param_b: rowData?.param_b,
+            param_a: rowData?.title,
+            param_b: rowData?.author,
             uid: rowData?.uid,
         })
     }, [rowData])

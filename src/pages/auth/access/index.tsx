@@ -28,7 +28,7 @@ const AccessDeniedPage = () => {
     );
 };
 
-AccessDeniedPage.getLayout = function getLayout(page: any) {
+AccessDeniedPage.getLayout = function getLayout(page) {
     return (
         <React.Fragment>
             {page}

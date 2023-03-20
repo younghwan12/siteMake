@@ -5,7 +5,7 @@ const Custom404 = () => {
     return <NotFound />;
 };
 
-Custom404.getLayout = function getLayout(page: any) {
+Custom404.getLayout = function getLayout(page) {
     return page;
 };
 

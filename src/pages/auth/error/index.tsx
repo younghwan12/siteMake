@@ -28,7 +28,7 @@ const ErrorPage = () => {
     );
 };
 
-ErrorPage.getLayout = function getLayout(page: any) {
+ErrorPage.getLayout = function getLayout(page) {
     return (
         <React.Fragment>
             {page}

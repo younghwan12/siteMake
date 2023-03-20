@@ -320,8 +320,21 @@ const AppMenu = () => {
             label: 'API TEST',
             items: [
                 { label: 'Board', icon: 'pi pi-fw pi-id-card', to: '/board' },
-                { label: '탐색기', icon: 'pi pi-fw pi-file-excel', to: '/explorer' },
+                { label: 'explorer', icon: 'pi pi-fw pi-file-excel', to: '/explorer' },
                 { label: 'flowchart', icon: 'pi pi-fw pi-circle-off', to: '/flowchart' },
+                { label: 'treeguide', icon: 'pi pi-fw pi-circle-on', to: '/treeguide' },
+            ]
+        },
+        {
+            label: '팀사이트',
+            to: '/teamsite',
+            items: [
+                {
+                    label: '공지사항',
+                    icon: 'pi pi-fw pi-id-card',
+                    to: '/noti'
+                },
+                { label: '정기보고', icon: 'pi pi-fw pi-circle-on', to: '/treeguide' },
             ]
         },
         {

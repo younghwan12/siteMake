@@ -58,7 +58,7 @@ const NotFoundPage = () => {
     );
 };
 
-NotFoundPage.getLayout = function getLayout(page: any) {
+NotFoundPage.getLayout = function getLayout(page) {
     return (
         <React.Fragment>
             {page}

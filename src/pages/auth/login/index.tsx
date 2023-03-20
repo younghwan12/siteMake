@@ -90,7 +90,7 @@ const LoginPage = () => {
     );
 };
 
-LoginPage.getLayout = function getLayout(page: any) {
+LoginPage.getLayout = function getLayout(page) {
     return (
         <React.Fragment>
             {page}

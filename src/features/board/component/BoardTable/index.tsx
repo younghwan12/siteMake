@@ -78,12 +78,12 @@ const BoardTable = () => {
         setVisible2(true)
     }
 
-    const bodyTemplate = (rowData) => {
+    const bodyTemplate = (rowData: any) => {
         return (
             <Button onClick={(e) => delFunc(rowData)}>삭제 </Button>
         )
     }
-    const delFunc = (rowData) => {
+    const delFunc = (rowData: any) => {
         modal.confirm({
             title: DELETE_CONFIRM_MSG,
             onOk() {
